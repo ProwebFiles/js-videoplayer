@@ -141,7 +141,7 @@ class Player {
             muteBtnIcon
         } = this;
         /* создаём переключатель, при каждом запуске метода возвращает true/false. В первый раз true, во второй false, третий true и т.д */
-        this.isMuted = !this.isMuted;
+        this.isMuted = !video.muted;
         /* если переключатель равен true - отключить звук, иначе включить */
         video.muted = this.isMuted;
         /* если переключатель равен true - устанавливаем иконку mute, иначе иконку volume */
@@ -163,6 +163,8 @@ class Player {
             звук в видео принимает значение от 0 до 1, а значение инпута по умолчанию возращает от 0 до 100
             поделив на 100 (например 50 / 100) получаем 0.5
         */
+        /* включаем звук */
+        video.muted = false;
         video.volume = volumeToggler.value / 100;
         /* если значение инпута меньше или равно нулю, устанавливаем иконку отключенного звука, если больше 0 возвращаем иконку включенного звука */
         muteBtnIcon.className = volumeToggler.value <= 0 ? 'fas fa-volume-off' : 'fas fa-volume-up';
